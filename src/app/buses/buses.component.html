@@ -1,0 +1,54 @@
+<div class="container">
+    <mat-form-field appearance="fill">
+        <mat-label>Departamento</mat-label>
+        <mat-select (selectionChange)="changeState($event.value)" [(ngModel)]="state">
+          <mat-option *ngFor="let state of states" [value]="state.id">{{state.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Ciudad</mat-label>
+        <mat-select [(ngModel)]="city">
+          <mat-option *ngFor="let city of cities" [value]="city.name">{{city.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Fecha inicial</mat-label>
+        <input matInput [matDatepicker]="picker1" [(ngModel)]="start">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Fecha Final</mat-label>
+        <input matInput [matDatepicker]="picker2" [(ngModel)]="end">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field>
+    <button mat-button color="primary" (click)="search()">buscar</button>
+    <table >
+        <tr >
+          <th>Name</th>
+          <th>Miles_per_Gallon</th>
+          <th>Cylinders</th>
+          <th>Displacement</th>
+          <th>Horsepower</th>
+          <th>Weight_in_lbs</th>
+          <th>Acceleration</th>
+          <th>dateToChangeWheels</th>
+        </tr>
+        <tr *ngFor="let bus of buses">
+            <td>{{bus.Name}}</td>
+            <td>{{bus.Miles_per_Gallon}}</td>
+            <td>{{bus.Cylinders}}</td>
+            <td>{{bus.Displacement}}</td>
+            <td>{{bus.Horsepower}}</td>
+            <td>{{bus.Weight_in_lbs}}</td>
+            <td>{{bus.Acceleration}}</td>
+            <td>{{bus.dateToChangeWheels}}</td>
+          </tr>
+      </table>
+
+      <p *ngFor="let bus of buses">{{bus.name}}</p>
+    
+</div>
